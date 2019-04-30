@@ -1,0 +1,28 @@
+﻿@model TorrentsListViewModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<form method="get">
+    <div class="form-inline form-group">
+        <label class="control-label">Имя: </label>
+        @Html.TextBox("name", Model.Name, htmlAttributes: new { @class = "form-control" })
+
+        
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Дата регистрации</th>
+        <th>Название</th>
+        <th>Размер(Б)</th>
+        <th>Tracker ID</th>
+    </tr>
+
+    @foreach (var i in Model.torrents)
+    {
+<tr><td><a href="Content" />@i.Id</td><td>@i.RegistredAt</td><td>@i.Title</td><td>@i.Size Byte</td><td>@i.TrackerId</td></tr>
+    }
+</table>

@@ -1,0 +1,6 @@
+C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\obj\Debug\netcoreapp2.2\TorrentsApp.csprojAssemblyReference.cache
+C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\obj\Debug\netcoreapp2.2\TorrentsApp.csproj.CoreCompileInputs.cache
+C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\obj\Debug\netcoreapp2.2\TorrentsApp.RazorAssemblyInfo.cache
+C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\obj\Debug\netcoreapp2.2\TorrentsApp.RazorAssemblyInfo.cs
+C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\obj\Debug\netcoreapp2.2\TorrentsApp.AssemblyInfoInputs.cache
+C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\obj\Debug\netcoreapp2.2\TorrentsApp.AssemblyInfo.cs
