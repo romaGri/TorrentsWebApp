@@ -35,9 +35,15 @@ namespace TorrentsWebApp.Controllers
             };
             return View(viewModel);
         }
-        
-       
-        public ActionResult Privacy(string name)
+        [Route("Content/{id:int}")]
+        public IActionResult Content(int id)
+        {
+            IQueryable<string> content = db.Torrents.Where(c => c.Id == id).Select(c => c.Content);
+      
+            return View(content);
+        }
+
+        public ActionResult Serach(string name)
         {
             IQueryable<Torrents> torrents = db.Torrents;
             if (!String.IsNullOrEmpty(name))

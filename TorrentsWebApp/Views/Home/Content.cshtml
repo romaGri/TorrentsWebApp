@@ -1,0 +1,11 @@
+﻿
+@model IQueryable<string>
+@{
+    ViewData["Title"] = "Content";
+}
+
+    @foreach(var q in Model)
+    {
+        <p>@q</p>
+    }
+
