@@ -31,4 +31,5 @@ C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\obj\Debug\netc
 C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\obj\Debug\netcoreapp2.2\Razor\Views\Content\Index.g.cshtml.cs
 C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\bin\Debug\netcoreapp2.2\DataLayer.dll
 C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\bin\Debug\netcoreapp2.2\DataLayer.pdb
-C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\obj\Debug\netcoreapp2.2\Razor\Views\Home\Content.g.cshtml.cs
+C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\obj\Debug\netcoreapp2.2\Razor\Views\Content\Content.g.cshtml.cs
+C:\Users\Raman_Hrytsuk\source\repos\TorrentsWebApp\TorrentsWebApp\obj\Debug\netcoreapp2.2\Razor\Views\Serach\Seracher.g.cshtml.cs

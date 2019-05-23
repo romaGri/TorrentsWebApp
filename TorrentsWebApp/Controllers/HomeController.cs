@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using TorrentsWebApp.Models;
 
@@ -35,27 +36,27 @@ namespace TorrentsWebApp.Controllers
             };
             return View(viewModel);
         }
-        [Route("Content/{id:int}")]
-        public IActionResult Content(int id)
-        {
-            IQueryable<string> content = db.Torrents.Where(c => c.Id == id).Select(c => c.Content);
-      
-            return View(content);
-        }
+        //[Route("Content/{id:int}")]
+        //public IActionResult Content(int id)
+        //{
+        //    IQueryable<string> content = db.Torrents.Where(c => c.Id == id).Select(c => c.Content);
 
-        public ActionResult Serach(string name)
-        {
-            IQueryable<Torrents> torrents = db.Torrents;
-            if (!String.IsNullOrEmpty(name))
-            {
-                torrents = torrents.Where(p => p.Title.Contains(name));
-            }
-            TorrentsListViewModel viewModel = new TorrentsListViewModel
-            {
-                Name = name
-            };
-            return View(viewModel);
-        }
+        //    return View(content);
+        //}
+        //[Route("Index/{name:string}")]
+        //public IActionResult SerachString(string name)
+        //{
+        //    IQueryable<Torrents> torrents = db.Torrents;
+        //    if (!String.IsNullOrEmpty(name))
+        //    {
+        //        torrents = torrents.Where(p => p.Title.Contains(name));
+        //    }
+        //TorrentsListViewModel viewModel = new TorrentsListViewModel
+        //{
+        //    Name = name
+        //};
+        //    return View(viewModel);
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

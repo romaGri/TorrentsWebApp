@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TorrentsWebApp.Models
 {
-    public class IndexViewModel
+     public class IndexViewModel
     {
 
         public IEnumerable<Torrents> torrents { get; set; }
