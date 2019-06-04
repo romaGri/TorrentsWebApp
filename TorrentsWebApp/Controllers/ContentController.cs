@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TorrentsWebApp.Helpers;
 using TorrentsWebApp.Models;
 
 namespace TorrentsWebApp.Controllers
@@ -15,12 +16,13 @@ namespace TorrentsWebApp.Controllers
         {
             db = context;
         }
+
         [Route("Content/{id:int}")]
         public IActionResult Content(int id)
         {
-            IQueryable<string> content = db.Torrents.Where(c => c.Id == id).Select(c => c.Content);
-
-            return View(content);
+            string content = db.Torrents.Where(c => c.Id == id).Select(c => c.Content).FirstOrDefault();
+            object HtmlContent = BBCodeHelper.Format(content);
+            return View(HtmlContent);
         }
     }
 }

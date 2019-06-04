@@ -20,43 +20,37 @@ namespace TorrentsWebApp.Controllers
             db = context;
         }
 
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index()
         {
-            int pageSize = 10;   // количество элементов на странице
+            int page = 1;
+            int pageSize = 30;   // количество элементов на странице
 
-            IQueryable<Torrents> source = db.Torrents;
-            var count = await source.CountAsync();
-            var items = await source.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
-
+            List<Torrents> source = db.Torrents.Take(pageSize).ToList();
+            var count = db.Torrents.Count();
             PageInfo pageViewModel = new PageInfo(count, page, pageSize);
             IndexViewModel viewModel = new IndexViewModel
             {
                 PageInfo = pageViewModel,
-                torrents = items
+                torrents = source
+            };
+            return View("PageHelper", viewModel);
+        }
+
+        public IActionResult PageHelper(string s, int page = 1)
+        {
+            int pageSize = 30;
+            IQueryable<Torrents> torrents = db.Torrents.Where(p => p.Title.Contains(s ?? "")).Skip((page - 1) * pageSize).Take(pageSize);
+            var count = db.Torrents.Count();
+            var torents_count = torrents.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync().Result;
+            PageInfo pageViewModel = new PageInfo(count, page, pageSize);
+            IndexViewModel viewModel = new IndexViewModel
+            {
+                PageInfo = pageViewModel,
+                torrents = torrents,
+                SearchString = s
             };
             return View(viewModel);
         }
-        //[Route("Content/{id:int}")]
-        //public IActionResult Content(int id)
-        //{
-        //    IQueryable<string> content = db.Torrents.Where(c => c.Id == id).Select(c => c.Content);
-
-        //    return View(content);
-        //}
-        //[Route("Index/{name:string}")]
-        //public IActionResult SerachString(string name)
-        //{
-        //    IQueryable<Torrents> torrents = db.Torrents;
-        //    if (!String.IsNullOrEmpty(name))
-        //    {
-        //        torrents = torrents.Where(p => p.Title.Contains(name));
-        //    }
-        //TorrentsListViewModel viewModel = new TorrentsListViewModel
-        //{
-        //    Name = name
-        //};
-        //    return View(viewModel);
-        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

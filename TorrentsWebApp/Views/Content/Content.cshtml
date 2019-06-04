@@ -1,11 +1,12 @@
 ﻿
-@model IQueryable<string>
+@model string
 @{
     ViewData["Title"] = "Content";
 }
 
 <h1>Content</h1>
-@foreach (var c in Model)
-{
-    <p>@c</p>
-}
+
+<input type="button" value="Кнопка" onClick='history.go(-1)'> @*JS*@
+
+<p>@Html.Raw(Model)</p>
+

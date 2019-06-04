@@ -1,4 +1,4 @@
-﻿@*@using TorrentsWebApp.Models
+﻿@using TorrentsWebApp.Models
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -27,7 +27,7 @@
         color: #fff; /* Цвет текста при наведении */
     }
 </style>
-<form asp-controller="Home" asp-action="PageHelper">
+<form asp-controller="Home" asp-action="PageHelper" method="get">
     <p>
         Title: <input type="text" name="s">
         <input type="submit" value="Filter" />
@@ -56,7 +56,7 @@
         </tr>
         @foreach (Torrents i in Model.torrents)
         {
-            <tr><td><a href="Content/@i.Id" />@i.Id</td><td>@i.RegistredAt</td><td>@i.Title</td><td>@i.Size Byte</td><td>@i.TrackerId</td></tr>
+            <tr><td><a href="../Content/@i.Id" />@i.Id</td><td>@i.RegistredAt</td><td>@i.Title</td><td>@i.Size Byte</td><td>@i.TrackerId</td></tr>
         }
     </table>
 
@@ -64,6 +64,8 @@
     {
         <a asp-action="PageHelper"
            asp-route-page="@(Model.PageInfo.PageNumber - 1)"
+
+           asp-route-s="@Model.SearchString"
            class="btn btn-default btn">
             <i class="glyphicon glyphicon-chevron-left"></i>
             Назад
@@ -73,6 +75,8 @@
     {
         <a asp-action="PageHelper"
            asp-route-page="@(Model.PageInfo.PageNumber + 1)"
+
+           asp-route-s="@Model.SearchString"
            class="btn btn-default btn">
             Вперед
             <i class="glyphicon glyphicon-chevron-right"></i>
@@ -80,4 +84,4 @@
     }
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
-</div>*@
+</div>

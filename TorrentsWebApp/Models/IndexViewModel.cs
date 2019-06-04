@@ -10,7 +10,8 @@ namespace TorrentsWebApp.Models
 
         public IEnumerable<Torrents> torrents { get; set; }
         public PageInfo PageInfo { get; set; }
-        public string Name { get; set; }
+        //public string Name { get; set; }
+        public string SearchString { get; set; }
 
     }
 }
