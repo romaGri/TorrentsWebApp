@@ -28,7 +28,7 @@ namespace TorrentsWebApp
         public void ConfigureServices(IServiceCollection services)
         {
 
-            string connection = "Server=(localdb)\\mssqllocaldb;Database=torrentsdb;Trusted_Connection=True;MultipleActiveResultSets = true";
+            string connection = "Server=(localdb)\\mssqllocaldb;Database=torrentsdbTest;Trusted_Connection=True;MultipleActiveResultSets = true";
             // This lambda determines whether user consent for non-essential cookies is needed for a given request.
             services.AddDbContext<torrentsdbContext>(options =>
            options.UseSqlServer(connection));

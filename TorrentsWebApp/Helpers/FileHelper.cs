@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 using TorrentsWebApp.Entities;
 
 namespace TorrentsWebApp.Helpers
@@ -9,9 +10,9 @@ namespace TorrentsWebApp.Helpers
         public static HtmlString CreateList(this IHtmlHelper html, File[] items)
         {
             string result = "<ul>";
-            foreach (File item in items)
+            foreach (var item in items)
             {
-                result += $"<li>{item}</li>";
+                result += $"<li>{item.Name + "Размер " + int.Parse(item.Size)/1024 + " Kb" }</li>";
             }
             result += "</ul>";
             return new HtmlString(result);

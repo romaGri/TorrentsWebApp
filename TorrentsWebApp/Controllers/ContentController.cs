@@ -18,12 +18,12 @@ namespace TorrentsWebApp.Controllers
         [Route("Content/{id:int}")]
         public IActionResult Content(int id)
         {
-            var torrent = db.Torrents.FirstOrDefault(c => c.Id == id);
+            var torrent = db.Torrents.FirstOrDefault(c => c.TorrentId == id);
 
             torrent.Content = BBCodeHelper.Format(torrent.Content);
-            torrent.Files.Select(f => f.TorrentId == id).ToArray();
-            
+            torrent.Files = db.Files.Where(f => f.TorrentId == id).ToArray();
 
+            
             return View(torrent);
         }
     }

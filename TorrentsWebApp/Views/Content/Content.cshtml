@@ -8,12 +8,13 @@
 }
 
 <h1>Content</h1>
-<h2>@Html.SourceStr(Model.Forum?.Value, "1" )</h2>
-<a>@Model.Id.</a>
-<a>@Model.Title</a>
+<p>@Html.SourceStr(Model.Forum?.Value, "1" )</p>
+<a> Id торрента: @Model.TorrentId</a>
+<h1>@Model.Title</h1>
 <a>@Html.Raw(Model.Content)</a>
 
-<a>@Model.Dir</a>
+<h1>@Model.Dir</h1>
+@Html.CreateList(Model.Files.ToArray())
 
 @*<p>@Html.Raw(Model)</p>*@
 
