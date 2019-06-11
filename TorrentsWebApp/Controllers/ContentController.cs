@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TorrentsWebApp.Helpers;
-using TorrentsWebApp.Models;
+using TorrentsWebApp.Infrastructure;
 
 namespace TorrentsWebApp.Controllers
 {
@@ -12,7 +10,7 @@ namespace TorrentsWebApp.Controllers
     {
         torrentsdbContext db;
 
-        public ContentController (torrentsdbContext context)
+        public ContentController(torrentsdbContext context)
         {
             db = context;
         }
@@ -20,9 +18,20 @@ namespace TorrentsWebApp.Controllers
         [Route("Content/{id:int}")]
         public IActionResult Content(int id)
         {
-            string content = db.Torrents.Where(c => c.Id == id).Select(c => c.Content).FirstOrDefault();
-            object HtmlContent = BBCodeHelper.Format(content);
-            return View(HtmlContent);
+            var torrent = db.Torrents.FirstOrDefault(c => c.Id == id);
+
+            torrent.Content = BBCodeHelper.Format(torrent.Content);
+            torrent.Files.Select(f => f.TorrentId == id).ToArray();
+            try
+            {
+                torrent.Forum.Value.ToString();
+            }
+            catch
+            {
+                torrent.Forum.Value = " Не найдено";
+            }
+
+            return View(torrent);
         }
     }
 }

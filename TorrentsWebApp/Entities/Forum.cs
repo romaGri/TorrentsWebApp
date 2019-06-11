@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TorrentsWebApp.Models
+namespace TorrentsWebApp.Entities
 {
     public partial class Forum
     {

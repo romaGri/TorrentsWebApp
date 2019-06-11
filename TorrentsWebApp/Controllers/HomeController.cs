@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
+using TorrentsWebApp.Entities;
+using TorrentsWebApp.Infrastructure;
 using TorrentsWebApp.Models;
 
 namespace TorrentsWebApp.Controllers
@@ -25,7 +24,7 @@ namespace TorrentsWebApp.Controllers
             int page = 1;
             int pageSize = 30;   // количество элементов на странице
 
-            List<Torrents> source = db.Torrents.Take(pageSize).ToList();
+            List<Torrent> source = db.Torrents.Take(pageSize).ToList();
             var count = db.Torrents.Count();
             PageInfo pageViewModel = new PageInfo(count, page, pageSize);
             IndexViewModel viewModel = new IndexViewModel
@@ -39,7 +38,7 @@ namespace TorrentsWebApp.Controllers
         public IActionResult PageHelper(string s, int page = 1)
         {
             int pageSize = 30;
-            IQueryable<Torrents> torrents = db.Torrents.Where(p => p.Title.Contains(s ?? "")).Skip((page - 1) * pageSize).Take(pageSize);
+            IQueryable<Torrent> torrents = db.Torrents.Where(p => p.Title.Contains(s ?? "")).Skip((page - 1) * pageSize).Take(pageSize);
             var count = db.Torrents.Count();
             var torents_count = torrents.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync().Result;
             PageInfo pageViewModel = new PageInfo(count, page, pageSize);

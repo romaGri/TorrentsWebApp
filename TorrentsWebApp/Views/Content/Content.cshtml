@@ -1,12 +1,21 @@
-﻿
-@model string
+﻿@using TorrentsWebApp.Helpers
+@using TorrentsWebApp.Entities
+
+
+@model Torrent
 @{
     ViewData["Title"] = "Content";
 }
 
 <h1>Content</h1>
+<h2>@Model.Forum.Value </h2>
+<a>@Model.Id.</a>
+<a>@Model.Title</a>
+<a>@Html.Raw(Model.Content)</a>
+
+<a>@Model.Dir</a>
+
+@*<p>@Html.Raw(Model)</p>*@
 
 <input type="button" value="Кнопка" onClick='history.go(-1)'> @*JS*@
-
-<p>@Html.Raw(Model)</p>
 

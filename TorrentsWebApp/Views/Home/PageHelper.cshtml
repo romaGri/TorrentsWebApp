@@ -54,7 +54,7 @@
                 Tracker ID
             </td>
         </tr>
-        @foreach (Torrents i in Model.torrents)
+        @foreach (var i in Model.torrents)
         {
             <tr><td><a href="../Content/@i.Id" />@i.Id</td><td>@i.RegistredAt</td><td>@i.Title</td><td>@i.Size Byte</td><td>@i.TrackerId</td></tr>
         }

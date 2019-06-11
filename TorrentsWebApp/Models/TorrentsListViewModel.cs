@@ -1,12 +1,12 @@
 ﻿
 using System.Collections.Generic;
-
+using TorrentsWebApp.Entities;
 
 namespace TorrentsWebApp.Models
 {
     public class TorrentsListViewModel
     {
-        public IEnumerable<Torrents> torrents { get; set; }
+        public IEnumerable<Torrent> torrents { get; set; }
         public string Name { get; set; }
     }
 }
