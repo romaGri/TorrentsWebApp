@@ -22,14 +22,7 @@ namespace TorrentsWebApp.Controllers
 
             torrent.Content = BBCodeHelper.Format(torrent.Content);
             torrent.Files.Select(f => f.TorrentId == id).ToArray();
-            try
-            {
-                torrent.Forum.Value.ToString();
-            }
-            catch
-            {
-                torrent.Forum.Value = " Не найдено";
-            }
+            
 
             return View(torrent);
         }
