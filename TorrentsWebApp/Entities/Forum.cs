@@ -9,6 +9,7 @@ namespace TorrentsWebApp.Entities
 
         public int Id { get; set; }
 
+        public int? ForumId { get; set; }
         public string Value { get; set; }
 
        

@@ -38,14 +38,14 @@ namespace TorrentsWebApp.Controllers
         public async Task<IActionResult> PageHelper(string s, int page = 1)
         {
             int pageSize = 30;
-            IQueryable<Torrent> torrents = db.Torrents.Where(p => p.Title.Contains(s ?? "")).Skip((page - 1) * pageSize).Take(pageSize);
-            var count = db.Torrents.Count();
-            List<Torrent> torents_count = torrents.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync().Result;
+            var query = db.Torrents.Where(p => string.IsNullOrWhiteSpace(s) || EF.Functions.Like(p.Title, $"%{s}%"));
+            var count = await query.CountAsync();
+            var torents = await query.Skip((page - 1) * pageSize).Take(pageSize).ToArrayAsync();
             PageInfo pageViewModel = new PageInfo(count, page, pageSize);
             IndexViewModel viewModel = new IndexViewModel
             {
                 PageInfo = pageViewModel,
-                torrents = torrents,
+                torrents = torents,
                 SearchString = s
             };
             return View(viewModel);
