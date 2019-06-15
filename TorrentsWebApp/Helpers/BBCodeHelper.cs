@@ -108,6 +108,9 @@ namespace TorrentsWebApp.Helpers
             _formatters.Add(new RegexFormatter(@"\[img align=((.|\n)*?)(?:\s*)\]((.|\n)*?)\[/img(?:\s*)\]", "<img src=\"$3\" border=\"0\" align=\"$1\" alt=\"\" />"));
             _formatters.Add(new RegexFormatter(@"\[img=((.|\n)*?)((.|\n)*?)(?:\s*)\]((.|\n)*?)\[/img(?:\s*)\]", "<img width=\"$1\" height=\"$3\" src=\"$5\" border=\"0\" alt=\"\" />"));
 
+            //_formatters.Add(new RegexFormatter(@"\[spoiler((.|\n)*?)(?:\s*)\]((.|\n)*?)\[/spoiler(?:\s*)]", "<span class=\"bbc-spoiler\">$1</span>"));
+
+
             _formatters.Add(new RegexFormatter(@"\[color=((.|\n)*?)(?:\s*)\]((.|\n)*?)\[/color(?:\s*)\]", "<span style=\"color=$1;\">$3</span>"));
 
             _formatters.Add(new RegexFormatter(@"\[hr(?:\s*)\]", "<hr />"));

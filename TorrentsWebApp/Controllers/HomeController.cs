@@ -35,12 +35,12 @@ namespace TorrentsWebApp.Controllers
             return View("PageHelper", viewModel);
         }
 
-        public IActionResult PageHelper(string s, int page = 1)
+        public async Task<IActionResult> PageHelper(string s, int page = 1)
         {
             int pageSize = 30;
             IQueryable<Torrent> torrents = db.Torrents.Where(p => p.Title.Contains(s ?? "")).Skip((page - 1) * pageSize).Take(pageSize);
             var count = db.Torrents.Count();
-            var torents_count = torrents.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync().Result;
+            List<Torrent> torents_count = torrents.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync().Result;
             PageInfo pageViewModel = new PageInfo(count, page, pageSize);
             IndexViewModel viewModel = new IndexViewModel
             {

@@ -9,12 +9,12 @@ namespace TorrentsWebApp.Helpers
     {
         public static HtmlString CreateList(this IHtmlHelper html, File[] items)
         {
-            string result = "<ul>";
+            string result = "<details> <ul>";
             foreach (var item in items)
             {
-                result += $"<li>{item.Name + "Размер " + int.Parse(item.Size)/1024 + " Kb" }</li>";
+                result += $"<li>{item.Name + " Размер " + int.Parse(item.Size)/1024 + " Kb" }</li>";
             }
-            result += "</ul>";
+            result += "</ul></details>";
             return new HtmlString(result);
         }
     }
